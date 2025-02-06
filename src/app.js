@@ -1,23 +1,26 @@
-import { User, Label } from './components';
-import styles from "./app.module.css";
+import PropTypes from 'prop-types';
+import {useState} from "react";
 
-const getUSerFromServer = () => ({
-    name: "Иван",
-        age: 30,
-        email: "iven@gmail.com",
-        phone: "+373 999 999 00 00"
-})
-
-export const App = () => {
-    const user = getUSerFromServer();
+const Product = ({name, price, amount}) => {
+    // const [amount, setAmount] = useState(initialAmount);
+    // amount - может быть и родительским компонентом и передваться в компонент
 
     return (
-        <div className={styles.app}>
-            <Label color={'red'}>Приложение</Label>
-            <div>Разная информация приложения </div>
-            {/*<User name={user.name} age={user.age} email={user.email} phone={user.phone} />*/}
-            <User {...user} />   можно итак написать сократив запись
-        </div>
-  );
+    <>
+        <div>
+            {name} - {price} руб
+        < /div>
+        <div>Количество: {amount}</div>
+        <Backet amount={amount} />
+    </>
+    );
 };
+
+Product.propTypes = {
+    name: PropTypes.string,
+    price: PropTypes.number,
+};
+//////////////////////////////////////// props(родительские 'внешние' данные) и состояния(компонентные данные)
+
+
 
