@@ -5,7 +5,7 @@ const Counter =({value, setValue}) => {
     return (
         <>
             <div>{value}</div>
-            <button onClick={() => setValue(value +1)}>+ 1</button>
+            <button onClick={() => setValue(value +1)}>{value}+ 1</button>
         </>
     );
 };
@@ -15,12 +15,16 @@ export const App = () => {
 
     return (
         <div className={styles.app}>
-            <label>Счетчик:</label>
+            <label>Счетчик: {value}</label>
             <Counter value={value} setValue={setValue}/>
         </div>
     );
 };
 
+// Single source of truth - в компоненте могут использоваться данные из разных источнков
+// Разные источники обновляются по разному
+// Источником из двух состояний выбираем то , что выше(родительский)
+// Мнемонизация - способность сохранять возвращаемые данные в память
 
 
 
